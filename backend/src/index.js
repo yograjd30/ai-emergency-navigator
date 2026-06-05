@@ -103,17 +103,23 @@ app.use((err, req, res, _next) => {
 });
 
 // --- Start Server ---
-const start = async () => {
-  try {
-    await connectDB();
-    app.listen(PORT, () => {
-      console.log(`🚨 SOS Nav API running on port ${PORT}`);
-      console.log(`   Environment: ${process.env.NODE_ENV || 'development'}`);
-    });
-  } catch (err) {
-    console.error('Failed to start server:', err);
-    process.exit(1);
-  }
-};
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  const start = async () => {
+    try {
+      await connectDB();
+      app.listen(PORT, () => {
+        console.log(`🚨 SOS Nav API running on port ${PORT}`);
+        console.log(`   Environment: ${process.env.NODE_ENV || 'development'}`);
+      });
+    } catch (err) {
+      console.error('Failed to start server:', err);
+      process.exit(1);
+    }
+  };
+  start();
+} else {
+  // In Vercel serverless environment, connect on first load
+  connectDB().catch(err => console.error('Database connection failed:', err));
+}
 
-start();
+export default app;
