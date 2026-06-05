@@ -15,7 +15,7 @@
   "hero.subtitle": "Instantly find the correct helpline, nearby services, and step-by-step procedures for any emergency in India.",
   "hero.cta.primary": "Get Emergency Help",
   "hero.cta.secondary": "Browse Helplines",
-  "hero.features": "Works without login • 10 languages • Offline helpline access",
+  "hero.features": "Works without login • 3 languages • Offline helpline access",
   "categories.police": "Police",
   "categories.ambulance": "Medical",
   "categories.cybercrime": "Cybercrime",
@@ -98,5 +98,18 @@
   "difficulty.moderate": "Moderate",
   "difficulty.complex": "Complex",
   "trust.verified": "All helpline data verified from official government directories",
-  "trust.count": "40+ helplines • 10+ procedures • 10 languages"
+  "trust.count": "40+ helplines • 10+ procedures • 3 languages",
+  "triage.confidence": "Confidence",
+  "chat.instruction": "Press Enter to send • Shift+Enter for new line",
+  "chat.viewAllHelplines": "View all helplines",
+  "triage.immediateSteps": "Immediate steps:",
+  "triage.foundHelplines": "I've found {count} relevant helplines for you. You can see them on the right panel.",
+  "triage.followUpPrompt": "Is there anything specific you need help with, or should I explain any of these steps in more detail?",
+  "chat.subtitle": "AI-powered emergency guidance",
+  "chat.newSession": "New session",
+  "chat.startNewSession": "Start a new session",
+  "chat.voiceInput": "Voice input",
+  "chat.startVoiceInput": "Start voice input",
+  "chat.inputLabel": "Emergency message input",
+  "chat.errorProcess": "Sorry, I couldn't process that. Please try again."
 }

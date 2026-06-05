@@ -72,7 +72,7 @@ export default function Chat() {
       const sr = new SpeechRecognition();
       sr.continuous = false;
       sr.interimResults = false;
-      sr.lang = language === 'hi' ? 'hi-IN' : language === 'ta' ? 'ta-IN' : 'en-IN';
+      sr.lang = language === 'hi' ? 'hi-IN' : language === 'kn' ? 'kn-IN' : 'en-IN';
       sr.onresult = (e: any) => {
         setInput(e.results[0][0].transcript);
         setIsRecording(false);
@@ -134,7 +134,7 @@ export default function Chat() {
           .slice(0, 3)
           .map((a, i) => `${i + 1}. ${a}`)
           .join('\n');
-        const assistantText = `${sevConf.icon} **${sevConf.label} — ${triageRes.triageResult.category.replace(/_/g, ' ').toUpperCase()}**\n\nImmediate steps:\n${actionsText}\n\nI've found ${triageRes.helplines.length} relevant helplines for you. You can see them on the right panel.\n\nIs there anything specific you need help with, or should I explain any of these steps in more detail?`;
+        const assistantText = `${sevConf.icon} **${t('severity.' + triageRes.triageResult.severity).toUpperCase()} — ${t('categories.' + triageRes.triageResult.category).toUpperCase()}**\n\n${t('triage.immediateSteps')}\n${actionsText}\n\n${t('triage.foundHelplines').replace('{count}', triageRes.helplines.length.toString())}\n\n${t('triage.followUpPrompt')}`;
 
         setMessages(prev =>
           prev.map(m => m.id === typingId ? { ...m, content: assistantText, isTyping: false } : m)
@@ -155,7 +155,7 @@ export default function Chat() {
       setMessages(prev =>
         prev.map(m =>
           m.id === typingId
-            ? { ...m, content: `Sorry, I couldn't process that. ${err.message || 'Please try again.'}`, isTyping: false }
+            ? { ...m, content: t('chat.errorProcess'), isTyping: false }
             : m
         )
       );
@@ -202,7 +202,7 @@ export default function Chat() {
                 </div>
                 <div>
                   <h1 className="font-bold text-sos-primary text-base">{t('chat.title')}</h1>
-                  <p className="text-xs text-sos-muted">AI-powered emergency guidance</p>
+                  <p className="text-xs text-sos-muted">{t('chat.subtitle')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -215,15 +215,15 @@ export default function Chat() {
                       border: `1px solid ${sevConf!.color}40`,
                     }}
                   >
-                    {sevConf!.icon} {sevConf!.label}
+                    {sevConf!.icon} {t('severity.' + triage.triageResult.severity).toUpperCase()}
                   </span>
                 )}
                 {sessionId && (
                   <button
                     onClick={resetSession}
                     className="p-2 rounded-lg hover:bg-sos-input transition-colors min-h-0"
-                    aria-label="New session"
-                    title="Start a new session"
+                    aria-label={t('chat.newSession')}
+                    title={t('chat.startNewSession')}
                   >
                     <RefreshCw className="w-4 h-4 text-sos-secondary" />
                   </button>
@@ -280,15 +280,15 @@ export default function Chat() {
                   rows={1}
                   className="flex-1 bg-sos-input rounded-xl px-4 py-3 text-sos-primary placeholder-sos-muted text-sm outline-none resize-none border border-sos-border focus:border-sos-accent transition-colors"
                   style={{ minHeight: '48px', maxHeight: '120px' }}
-                  aria-label="Emergency message input"
+                  aria-label={t('chat.inputLabel')}
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={toggleRecording}
                   className={`p-3 rounded-xl transition-colors min-h-0 ${isRecording ? 'bg-red-500 text-white' : 'bg-sos-input text-sos-secondary hover:text-sos-accent'}`}
-                  aria-label={isRecording ? t('chat.recording') : 'Start voice input'}
-                  title="Voice input"
+                  aria-label={isRecording ? t('chat.recording') : t('chat.startVoiceInput')}
+                  title={t('chat.voiceInput')}
                 >
                   {isRecording ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
                 </button>
@@ -304,7 +304,7 @@ export default function Chat() {
                 </button>
               </form>
               <p className="text-xs text-sos-muted mt-2 text-center">
-                Press Enter to send • Shift+Enter for new line
+                {t('chat.instruction')}
               </p>
             </div>
           </div>
@@ -326,20 +326,20 @@ export default function Chat() {
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-2xl">{sevConf!.icon}</span>
                     <div>
-                      <div className="text-xs text-sos-muted font-semibold uppercase tracking-wider">Severity</div>
+                      <div className="text-xs text-sos-muted font-semibold uppercase tracking-wider">{t('triage.severity')}</div>
                       <div className="font-bold text-sos-primary" style={{ color: sevConf!.color }}>
-                        {sevConf!.label}
+                        {t('severity.' + triage.triageResult.severity).toUpperCase()}
                       </div>
                     </div>
                     <div className="ml-auto text-right">
-                      <div className="text-xs text-sos-muted">Confidence</div>
+                      <div className="text-xs text-sos-muted">{t('triage.confidence')}</div>
                       <div className="font-bold text-sos-primary">
                         {Math.round(triage.triageResult.confidence * 100)}%
                       </div>
                     </div>
                   </div>
                   <div className="text-sm font-semibold text-sos-secondary capitalize">
-                    Category: {triage.triageResult.category.replace(/_/g, ' ')}
+                    {t('triage.category')}: {t('categories.' + triage.triageResult.category)}
                   </div>
                 </div>
 
@@ -347,7 +347,7 @@ export default function Chat() {
                 <div className="glass-card p-5 rounded-2xl">
                   <h3 className="font-bold text-sos-primary mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 text-amber-500" />
-                    Immediate Actions
+                    {t('triage.actions')}
                   </h3>
                   <ul className="space-y-2">
                     {triage.immediateActions.map((action, i) => (
@@ -389,7 +389,7 @@ export default function Chat() {
                       to="/helplines"
                       className="flex items-center justify-center gap-2 mt-4 text-sm text-sos-accent font-semibold hover:underline"
                     >
-                      View all helplines <ChevronRight className="w-4 h-4" />
+                      {t('chat.viewAllHelplines')} <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
                 )}

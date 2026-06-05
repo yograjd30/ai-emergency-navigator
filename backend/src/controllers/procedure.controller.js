@@ -76,11 +76,17 @@ export const adaptProcedure = asyncHandler(async (req, res) => {
 
   if (!adapted) {
     // Fallback: return original procedure with note
+    let message = 'AI assistance temporarily unavailable. Showing standard guidance.';
+    if (language === 'hi') {
+      message = 'एआई सहायता अस्थायी रूप से अनुपलब्ध है। मानक मार्गदर्शन दिखा रहा है।';
+    } else if (language === 'kn') {
+      message = 'AI ಸಹಾಯ ತಾತ್ಕಾಲಿಕವಾಗಿ ಲಭ್ಯವಿಲ್ಲ. ಪ್ರಮಾಣಿತ ಮಾರ್ಗದರ್ಶನವನ್ನು ತೋರಿಸಲಾಗುತ್ತಿದೆ.';
+    }
     return res.json({
       success: true,
       data: {
         adapted: false,
-        message: 'AI assistance temporarily unavailable. Showing standard guidance.',
+        message,
         procedure,
       },
     });

@@ -1,14 +1,7 @@
 export const SUPPORTED_LANGUAGES = {
   en: { name: 'English', nativeName: 'English', geminiCode: 'English' },
   hi: { name: 'Hindi', nativeName: 'हिन्दी', geminiCode: 'Hindi' },
-  ta: { name: 'Tamil', nativeName: 'தமிழ்', geminiCode: 'Tamil' },
-  te: { name: 'Telugu', nativeName: 'తెలుగు', geminiCode: 'Telugu' },
-  bn: { name: 'Bengali', nativeName: 'বাংলা', geminiCode: 'Bengali' },
-  mr: { name: 'Marathi', nativeName: 'मराठी', geminiCode: 'Marathi' },
   kn: { name: 'Kannada', nativeName: 'ಕನ್ನಡ', geminiCode: 'Kannada' },
-  ml: { name: 'Malayalam', nativeName: 'മലയാളം', geminiCode: 'Malayalam' },
-  gu: { name: 'Gujarati', nativeName: 'ગુજરાતી', geminiCode: 'Gujarati' },
-  pa: { name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ', geminiCode: 'Punjabi' },
 };
 
 /**

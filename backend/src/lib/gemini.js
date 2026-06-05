@@ -95,7 +95,7 @@ export async function aiTriage(message, language = 'en') {
   if (!TRIAGE_MODEL && !initGemini()) return null;
 
   try {
-    const prompt = `User's emergency message (language: ${language}):\n"${message}"\n\nClassify this emergency.`;
+    const prompt = `User's emergency message (language: ${language}):\n"${message}"\n\nClassify this emergency. You MUST provide the "suggestedActions" and "reasoning" strictly in the target language (e.g., Hindi/हिन्दी if language is 'hi', Kannada/ಕನ್ನಡ if language is 'kn', and English if language is 'en'). Do not use English for these fields if the language is 'hi' or 'kn'.`;
     const result = await TRIAGE_MODEL.generateContent([
       { role: 'user', parts: [{ text: TRIAGE_SYSTEM_PROMPT }] },
       { role: 'model', parts: [{ text: 'I understand. I will classify emergencies strictly following the rules and respond only with the specified JSON format.' }] },

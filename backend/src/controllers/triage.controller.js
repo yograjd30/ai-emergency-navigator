@@ -5,6 +5,39 @@ import { asyncHandler } from '../middleware/asyncHandler.js';
 import { keywordTriage } from '../utils/triageClassifier.js';
 import { aiTriage, aiFollowUp } from '../lib/gemini.js';
 
+const LOCALIZED_CATEGORIES = {
+  hi: {
+    police: 'पुलिस',
+    fire: 'अग्निशमन',
+    ambulance: 'चिकित्सा',
+    women: 'महिला सुरक्षा',
+    child: 'बाल सुरक्षा',
+    cybercrime: 'साइबर अपराध',
+    disaster: 'आपदा',
+    mental_health: 'मानसिक स्वास्थ्य',
+    senior: 'वरिष्ठ नागरिक',
+    missing_person: 'गुमशुदा व्यक्ति',
+    domestic_violence: 'घरेलू हिंसा',
+    road_accident: 'सड़क दुर्घटना',
+    general: 'सामान्य'
+  },
+  kn: {
+    police: 'ಪೊಲೀಸ್',
+    fire: 'ಅಗ್ನಿಶಾಮಕ',
+    ambulance: 'ವೈದ್ಯಕೀಯ',
+    women: 'ಮಹಿಳಾ ಸುರಕ್ಷತೆ',
+    child: 'ಮಕ್ಕಳ ಸುರಕ್ಷತೆ',
+    cybercrime: 'ಸೈಬರ್ ಅಪರಾಧ',
+    disaster: 'ವಿಪತ್ತು',
+    mental_health: 'ಮಾನಸಿಕ ಆರೋಗ್ಯ',
+    senior: 'ಹಿರಿಯ ನಾಗರಿಕರು',
+    missing_person: 'ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿ',
+    domestic_violence: 'ಗೃಹಹಿಂಸೆ',
+    road_accident: 'ರಸ್ತೆ ಅಪಘಾತ',
+    general: 'ಸಾಮಾನ್ಯ'
+  }
+};
+
 /**
  * POST /api/triage
  * Main triage endpoint — classifies emergency and returns matched helplines.
@@ -14,9 +47,15 @@ export const triageEmergency = asyncHandler(async (req, res) => {
   const { message, language = 'en', location } = req.body;
 
   if (!message || typeof message !== 'string' || message.trim().length < 3) {
+    let error = 'Please describe your emergency (minimum 3 characters)';
+    if (language === 'hi') {
+      error = 'कृपया अपनी आपातकालीन स्थिति का वर्णन करें (न्यूनतम 3 वर्ण)';
+    } else if (language === 'kn') {
+      error = 'ದಯವಿಟ್ಟು ನಿಮ್ಮ ತುರ್ತು ಪರಿಸ್ಥಿತಿಯನ್ನು ವಿವರಿಸಿ (ಕನಿಷ್ಠ 3 ಅಕ್ಷರಗಳು)';
+    }
     return res.status(400).json({
       success: false,
-      error: 'Please describe your emergency (minimum 3 characters)',
+      error,
       code: 400,
     });
   }
@@ -24,7 +63,7 @@ export const triageEmergency = asyncHandler(async (req, res) => {
   const cleanMessage = message.trim().slice(0, 2000); // Limit input length
 
   // Step 1: Keyword-based triage
-  let triageResult = keywordTriage(cleanMessage);
+  let triageResult = keywordTriage(cleanMessage, language);
 
   // Step 2: If low confidence, try Gemini AI
   if (triageResult.confidence < 0.7) {
@@ -135,20 +174,26 @@ export const followUp = asyncHandler(async (req, res) => {
   const { sessionId } = req.params;
   const { message } = req.body;
 
-  if (!message || typeof message !== 'string' || message.trim().length < 1) {
-    return res.status(400).json({
-      success: false,
-      error: 'Message is required',
-      code: 400,
-    });
-  }
-
   const session = await EmergencySession.findById(sessionId);
   if (!session) {
     return res.status(404).json({
       success: false,
       error: 'Session not found',
       code: 404,
+    });
+  }
+
+  if (!message || typeof message !== 'string' || message.trim().length < 1) {
+    let error = 'Message is required';
+    if (session.language === 'hi') {
+      error = 'संदेश आवश्यक है';
+    } else if (session.language === 'kn') {
+      error = 'ಸಂದೇಶ ಅಗತ್ಯವಿದೆ';
+    }
+    return res.status(400).json({
+      success: false,
+      error,
+      code: 400,
     });
   }
 
@@ -166,7 +211,14 @@ export const followUp = asyncHandler(async (req, res) => {
 
   // Fallback if AI fails
   if (!responseText) {
-    responseText = `I understand you need more help with this ${session.category.replace('_', ' ')} situation. Please refer to the helpline directory for verified contact numbers, or use the procedure guide for step-by-step instructions. If you're in immediate danger, call 112.`;
+    const cat = (LOCALIZED_CATEGORIES[session.language] || {})[session.category] || session.category.replace('_', ' ');
+    if (session.language === 'hi') {
+      responseText = `मैं समझता हूँ कि आपको इस ${cat} स्थिति में और मदद की आवश्यकता है। कृपया सत्यापित संपर्क नंबरों के लिए हेल्पलाइन निर्देशिका देखें, या चरण-दर-चरण निर्देशों के लिए प्रक्रिया गाइड का उपयोग करें। यदि आप तत्काल खतरे में हैं, तो 112 पर कॉल करें।`;
+    } else if (session.language === 'kn') {
+      responseText = `ಈ ${cat} ಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ನಿಮಗೆ ಹೆಚ್ಚಿನ ಸಹಾಯದ ಅಗತ್ಯವಿದೆ ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇನೆ. ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿದ ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳಿಗಾಗಿ ಹೆಲ್ಪ್‌ಲೈನ್ ಡೈರೆಕ್ಟರಿಯನ್ನು ನೋಡಿ, ಅಥವಾ ಹಂತ-ಹಂತದ ಸೂಚನೆಗಳಿಗಾಗಿ ಕಾರ್ಯವಿಧಾನದ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಬಳಸಿ. ನೀವು ತಕ್ಷಣದ ಅಪಾಯದಲ್ಲಿದ್ದರೆ, 112 ಗೆ ಕರೆ ಮಾಡಿ.`;
+    } else {
+      responseText = `I understand you need more help with this ${cat} situation. Please refer to the helpline directory for verified contact numbers, or use the procedure guide for step-by-step instructions. If you're in immediate danger, call 112.`;
+    }
   }
 
   // Add assistant response to conversation

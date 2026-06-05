@@ -38,11 +38,21 @@ export const getHelplines = asyncHandler(async (req, res) => {
  * Returns top emergency numbers only (112, 100, 101, 102, 108)
  */
 export const getEmergencyHelplines = asyncHandler(async (req, res) => {
+  const { lang } = req.query;
   const helplines = await Helpline.find({ isEmergency: true, active: true })
     .sort({ priority: -1 })
     .lean()
     .select('name nameLocalized number category agency description hours isEmergency');
 
+  const data = helplines.map(h => {
+    const localized = {};
+    if (lang && lang !== 'en') {
+      localized.localizedName = h.nameLocalized?.get?.(lang) || h.nameLocalized?.[lang] || h.name;
+      localized.localizedDesc = h.descLocalized?.get?.(lang) || h.descLocalized?.[lang] || h.description;
+    }
+    return { ...h, ...localized };
+  });
+
   res.set('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
-  res.json({ success: true, data: helplines });
+  res.json({ success: true, data });
 });

@@ -4,14 +4,7 @@ import en from '../i18n/en.json';
 const SUPPORTED_LANGUAGES = {
   en: { name: 'English', nativeName: 'English' },
   hi: { name: 'Hindi', nativeName: 'हिन्दी' },
-  ta: { name: 'Tamil', nativeName: 'தமிழ்' },
-  te: { name: 'Telugu', nativeName: 'తెలుగు' },
-  bn: { name: 'Bengali', nativeName: 'বাংলা' },
-  mr: { name: 'Marathi', nativeName: 'मराठी' },
   kn: { name: 'Kannada', nativeName: 'ಕನ್ನಡ' },
-  ml: { name: 'Malayalam', nativeName: 'മലയാളം' },
-  gu: { name: 'Gujarati', nativeName: 'ગુજરાતી' },
-  pa: { name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ' },
 };
 
 type LangCode = keyof typeof SUPPORTED_LANGUAGES;
