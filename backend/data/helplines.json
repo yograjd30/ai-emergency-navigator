@@ -1,0 +1,506 @@
+[
+  {
+    "_id": "zem8m6d7cyjmg55hi5qpxm",
+    "name": "National Emergency Number",
+    "nameLocalized": {
+      "hi": "राष्ट्रीय आपातकालीन नंबर",
+      "ta": "தேசிய அவசர எண்",
+      "te": "జాతీయ అత్యవసర నంబర్",
+      "bn": "জাতীয় জরুরি নম্বর",
+      "mr": "राष्ट्रीय आपत्कालीन क्रमांक"
+    },
+    "number": "112",
+    "category": "general",
+    "isEmergency": true,
+    "priority": 100,
+    "agency": "Ministry of Home Affairs",
+    "description": "Single unified emergency number for Police, Fire, and Ambulance services across India",
+    "descLocalized": {
+      "hi": "पुलिस, अग्निशमन और एम्बुलेंस सेवाओं के लिए एकीकृत आपातकालीन नंबर"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "c54qlun756fvyufuun20ek",
+    "name": "Police",
+    "nameLocalized": {
+      "hi": "पुलिस",
+      "ta": "காவல்துறை",
+      "te": "పోలీసులు",
+      "bn": "পুলিশ",
+      "mr": "पोलीस"
+    },
+    "number": "100",
+    "category": "police",
+    "isEmergency": true,
+    "priority": 95,
+    "agency": "State Police Department",
+    "description": "Emergency police assistance for crime, theft, assault, and law enforcement",
+    "descLocalized": {
+      "hi": "अपराध, चोरी, हमले के लिए आपातकालीन पुलिस सहायता"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "y1vjr51ab6k5p72sby4x67",
+    "name": "Fire Brigade",
+    "nameLocalized": {
+      "hi": "अग्निशमन सेवा",
+      "ta": "தீயணைப்பு துறை",
+      "te": "అగ్నిమాపక దళం",
+      "bn": "দমকল বিভাগ",
+      "mr": "अग्निशमन दल"
+    },
+    "number": "101",
+    "category": "fire",
+    "isEmergency": true,
+    "priority": 95,
+    "agency": "Fire Services Department",
+    "description": "Emergency fire and rescue services",
+    "descLocalized": {
+      "hi": "आपातकालीन अग्निशमन और बचाव सेवाएं"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "yr06v5wemacznh3035i8",
+    "name": "Ambulance",
+    "nameLocalized": {
+      "hi": "एम्बुलेंस",
+      "ta": "ஆம்புலன்ஸ்",
+      "te": "అంబులెన్స్",
+      "bn": "অ্যাম্বুলেন্স",
+      "mr": "रुग्णवाहिका"
+    },
+    "number": "102",
+    "category": "ambulance",
+    "isEmergency": true,
+    "priority": 95,
+    "agency": "Ministry of Health & Family Welfare",
+    "description": "Free ambulance service for pregnant women and sick infants",
+    "descLocalized": {
+      "hi": "गर्भवती महिलाओं और बीमार शिशुओं के लिए मुफ्त एम्बुलेंस सेवा"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "1zznk55drgvhxqt50dmn69",
+    "name": "Emergency Medical Service (CATS)",
+    "nameLocalized": {
+      "hi": "आपातकालीन चिकित्सा सेवा",
+      "ta": "அவசர மருத்துவ சேவை",
+      "te": "అత్యవసర వైద్య సేవ"
+    },
+    "number": "108",
+    "category": "ambulance",
+    "isEmergency": true,
+    "priority": 90,
+    "agency": "GVK EMRI / State Government",
+    "description": "Emergency ambulance and trauma care service available across most Indian states",
+    "descLocalized": {
+      "hi": "अधिकांश भारतीय राज्यों में उपलब्ध आपातकालीन एम्बुलेंस और ट्रॉमा केयर सेवा"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "4g190hc2k3ns1niki4ks1n",
+    "name": "Women Helpline",
+    "nameLocalized": {
+      "hi": "महिला हेल्पलाइन",
+      "ta": "பெண்கள் உதவி எண்",
+      "te": "మహిళా హెల్ప్‌లైన్",
+      "bn": "মহিলা হেল্পলাইন",
+      "mr": "महिला हेल्पलाईन"
+    },
+    "number": "181",
+    "category": "women",
+    "priority": 85,
+    "agency": "Ministry of Women & Child Development",
+    "description": "24/7 helpline for women in distress — harassment, domestic violence, assault, dowry issues",
+    "descLocalized": {
+      "hi": "संकट में महिलाओं के लिए 24/7 हेल्पलाइन — उत्पीड़न, घरेलू हिंसा, दहेज"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "a245fsngrvprlozrj7p8i",
+    "name": "Women Helpline (Domestic Violence)",
+    "nameLocalized": {
+      "hi": "महिला हेल्पलाइन (घरेलू हिंसा)",
+      "ta": "பெண்கள் உதவி எண் (குடும்ப வன்முறை)"
+    },
+    "number": "1091",
+    "category": "domestic_violence",
+    "priority": 85,
+    "agency": "State Police / Women's Cell",
+    "description": "Dedicated helpline for domestic violence and crimes against women",
+    "descLocalized": {
+      "hi": "घरेलू हिंसा और महिलाओं के खिलाफ अपराधों के लिए समर्पित हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "75agfdk53jm4bsawcmi9br",
+    "name": "Child Helpline (Childline)",
+    "nameLocalized": {
+      "hi": "चाइल्ड हेल्पलाइन (चाइल्डलाइन)",
+      "ta": "குழந்தை உதவி எண்",
+      "te": "చైల్డ్ హెల్ప్‌లైన్",
+      "bn": "চাইল্ড হেল্পলাইন"
+    },
+    "number": "1098",
+    "category": "child",
+    "priority": 85,
+    "agency": "Ministry of Women & Child Development",
+    "description": "Emergency helpline for children in distress — abuse, trafficking, child labour, missing children",
+    "descLocalized": {
+      "hi": "संकट में बच्चों के लिए आपातकालीन हेल्पलाइन — शोषण, तस्करी, बाल श्रम"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "vz38cc4can2n9yutec3ns",
+    "name": "Cyber Crime Helpline",
+    "nameLocalized": {
+      "hi": "साइबर अपराध हेल्पलाइन",
+      "ta": "சைபர் குற்ற உதவி எண்",
+      "te": "సైబర్ క్రైమ్ హెల్ప్‌లైన్",
+      "bn": "সাইবার ক্রাইম হেল্পলাইন"
+    },
+    "number": "1930",
+    "category": "cybercrime",
+    "priority": 80,
+    "agency": "Ministry of Home Affairs",
+    "description": "Report online fraud, UPI scams, phishing, hacking, identity theft, and all cybercrimes",
+    "descLocalized": {
+      "hi": "ऑनलाइन धोखाधड़ी, UPI स्कैम, फिशिंग, हैकिंग की रिपोर्ट करें"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "4wlgwfqml3kqv4tzzcumh",
+    "name": "National Disaster Helpline (NDMA)",
+    "nameLocalized": {
+      "hi": "राष्ट्रीय आपदा हेल्पलाइन",
+      "ta": "தேசிய பேரிடர் உதவி எண்",
+      "te": "జాతీయ విపత్తు హెల్ప్‌లైన్"
+    },
+    "number": "1078",
+    "category": "disaster",
+    "priority": 80,
+    "agency": "National Disaster Management Authority (NDMA)",
+    "description": "Helpline for natural disasters — floods, earthquakes, cyclones, landslides",
+    "descLocalized": {
+      "hi": "प्राकृतिक आपदाओं के लिए हेल्पलाइन — बाढ़, भूकंप, चक्रवात, भूस्खलन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "w21fzpalnsos93c11dpdb",
+    "name": "Senior Citizen Helpline",
+    "nameLocalized": {
+      "hi": "वरिष्ठ नागरिक हेल्पलाइन",
+      "ta": "மூத்த குடிமக்கள் உதவி எண்",
+      "te": "సీనియర్ సిటిజన్ హెల్ప్‌లైన్"
+    },
+    "number": "14567",
+    "category": "senior",
+    "priority": 70,
+    "agency": "Ministry of Social Justice & Empowerment",
+    "description": "Helpline for senior citizens facing abuse, neglect, or requiring assistance",
+    "descLocalized": {
+      "hi": "दुर्व्यवहार, उपेक्षा का सामना कर रहे वरिष्ठ नागरिकों के लिए हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "u1u0qv852el1dfd9j6g4mb",
+    "name": "Mental Health Helpline (Vandrevala Foundation)",
+    "nameLocalized": {
+      "hi": "मानसिक स्वास्थ्य हेल्पलाइन",
+      "ta": "மனநல உதவி எண்",
+      "te": "మానసిక ఆరోగ్య హెల్ప్‌లైన్"
+    },
+    "number": "1860-2662-345",
+    "category": "mental_health",
+    "priority": 75,
+    "agency": "Vandrevala Foundation",
+    "description": "24/7 mental health support — depression, anxiety, suicidal thoughts, stress counseling",
+    "descLocalized": {
+      "hi": "24/7 मानसिक स्वास्थ्य सहायता — अवसाद, चिंता, आत्मघाती विचार"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "n0bmvt118wxaslkeso6fn",
+    "name": "Mental Health Helpline (iCall)",
+    "nameLocalized": {
+      "hi": "मानसिक स्वास्थ्य हेल्पलाइन (iCall)",
+      "ta": "மனநல உதவி எண் (iCall)"
+    },
+    "number": "9152987821",
+    "category": "mental_health",
+    "priority": 70,
+    "agency": "TISS iCall",
+    "description": "Professional counseling service for emotional and psychological support",
+    "descLocalized": {
+      "hi": "भावनात्मक और मनोवैज्ञानिक सहायता के लिए पेशेवर परामर्श सेवा"
+    },
+    "hours": "Mon-Sat, 8 AM - 10 PM",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "skz66rqxtlpjsc6yel619",
+    "name": "Railway Helpline",
+    "nameLocalized": {
+      "hi": "रेलवे हेल्पलाइन",
+      "ta": "ரயில்வே உதவி எண்",
+      "te": "రైల్వే హెల్ప్‌లైన్"
+    },
+    "number": "139",
+    "category": "railway",
+    "priority": 60,
+    "agency": "Indian Railways",
+    "description": "Railway enquiry, complaints, emergency on trains, and security helpline",
+    "descLocalized": {
+      "hi": "रेलवे पूछताछ, शिकायतें, ट्रेनों में आपातकाल और सुरक्षा हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "ii69kacu4y7e07twkzpk6",
+    "name": "Road Accident Emergency Service",
+    "nameLocalized": {
+      "hi": "सड़क दुर्घटना आपातकालीन सेवा",
+      "ta": "சாலை விபத்து அவசர சேவை"
+    },
+    "number": "1073",
+    "category": "road_accident",
+    "priority": 75,
+    "agency": "Ministry of Road Transport & Highways",
+    "description": "Emergency response for road accidents including rescue and medical aid",
+    "descLocalized": {
+      "hi": "सड़क दुर्घटनाओं के लिए आपातकालीन प्रतिक्रिया — बचाव और चिकित्सा सहायता"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "afu9rwg798qhrxyf9by44f",
+    "name": "Anti-Poison Helpline",
+    "nameLocalized": {
+      "hi": "विष नियंत्रण हेल्पलाइन",
+      "ta": "நச்சு எதிர்ப்பு உதவி எண்"
+    },
+    "number": "1066",
+    "category": "poison",
+    "priority": 70,
+    "agency": "All India Institute of Medical Sciences (AIIMS)",
+    "description": "Emergency helpline for poisoning cases — accidental ingestion, chemical exposure",
+    "descLocalized": {
+      "hi": "विषाक्तता के मामलों के लिए आपातकालीन हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "ywixnqjyswsyq57gk35zn",
+    "name": "Blood Bank (Red Cross)",
+    "nameLocalized": {
+      "hi": "ब्लड बैंक (रेड क्रॉस)",
+      "ta": "இரத்த வங்கி (செஞ்சிலுவை)"
+    },
+    "number": "1910",
+    "category": "ambulance",
+    "priority": 50,
+    "agency": "Indian Red Cross Society",
+    "description": "Blood bank directory and emergency blood requirement assistance",
+    "descLocalized": {
+      "hi": "ब्लड बैंक निर्देशिका और आपातकालीन रक्त आवश्यकता सहायता"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "n9iqymu207k9ituxp7tmje",
+    "name": "Anti-Human Trafficking Helpline",
+    "nameLocalized": {
+      "hi": "मानव तस्करी विरोधी हेल्पलाइन",
+      "ta": "மனித கடத்தல் எதிர்ப்பு உதவி எண்"
+    },
+    "number": "1800-419-8588",
+    "category": "human_trafficking",
+    "priority": 65,
+    "agency": "Ministry of Home Affairs",
+    "description": "Toll-free helpline to report human trafficking and rescue victims",
+    "descLocalized": {
+      "hi": "मानव तस्करी की रिपोर्ट करने और पीड़ितों को बचाने के लिए टोल-फ्री हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "9jnigfrl3lvk6srw0gszm",
+    "name": "Missing Children Helpline",
+    "nameLocalized": {
+      "hi": "गुमशुदा बच्चे हेल्पलाइन",
+      "ta": "காணாமல் போன குழந்தைகள் உதவி எண்"
+    },
+    "number": "1094",
+    "category": "missing_person",
+    "priority": 75,
+    "agency": "Ministry of Women & Child Development",
+    "description": "Helpline to report and trace missing children",
+    "descLocalized": {
+      "hi": "गुमशुदा बच्चों की रिपोर्ट और खोज के लिए हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "qibldtji68dia1p9brsduj",
+    "name": "KIRAN Mental Health Helpline",
+    "nameLocalized": {
+      "hi": "किरण मानसिक स्वास्थ्य हेल्पलाइन"
+    },
+    "number": "1800-599-0019",
+    "category": "mental_health",
+    "priority": 80,
+    "agency": "Ministry of Social Justice & Empowerment",
+    "description": "Toll-free 24/7 mental health helpline — counseling in 13 languages",
+    "descLocalized": {
+      "hi": "टोल-फ्री 24/7 मानसिक स्वास्थ्य हेल्पलाइन — 13 भाषाओं में परामर्श"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "et7solwwl0o4xs00shv506",
+    "name": "National Commission for Women",
+    "nameLocalized": {
+      "hi": "राष्ट्रीय महिला आयोग"
+    },
+    "number": "7827-170-170",
+    "category": "women",
+    "priority": 70,
+    "agency": "National Commission for Women",
+    "description": "WhatsApp-enabled complaint registration for women facing violence or harassment",
+    "descLocalized": {
+      "hi": "हिंसा या उत्पीड़न का सामना कर रही महिलाओं के लिए व्हाट्सएप शिकायत"
+    },
+    "hours": "Mon-Fri, 9 AM - 5:30 PM",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "hfwvvq9juup5edmteypj",
+    "name": "Consumer Helpline",
+    "nameLocalized": {
+      "hi": "उपभोक्ता हेल्पलाइन"
+    },
+    "number": "1800-11-4000",
+    "category": "general",
+    "priority": 55,
+    "agency": "Ministry of Consumer Affairs",
+    "description": "Toll-free helpline for consumer complaints, product issues, and fraud",
+    "descLocalized": {
+      "hi": "उपभोक्ता शिकायतों, उत्पाद समस्याओं और धोखाधड़ी के लिए टोल-फ्री हेल्पलाइन"
+    },
+    "hours": "Mon-Sat, 9:30 AM - 5:30 PM",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "h5vdaunjezi8nxbxxjjdcm",
+    "name": "LPG Gas Leak Emergency",
+    "nameLocalized": {
+      "hi": "एलपीजी गैस रिसाव आपातकाल"
+    },
+    "number": "1906",
+    "category": "fire",
+    "priority": 65,
+    "agency": "Indian Oil / Bharat Gas / HP Gas",
+    "description": "Emergency helpline for LPG gas leak and related emergencies",
+    "descLocalized": {
+      "hi": "एलपीजी गैस रिसाव और संबंधित आपात स्थितियों के लिए आपातकालीन हेल्पलाइन"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  },
+  {
+    "_id": "uq39bs7auojyt8m3wbkx6",
+    "name": "AIDS Helpline",
+    "nameLocalized": {
+      "hi": "एड्स हेल्पलाइन"
+    },
+    "number": "1097",
+    "category": "general",
+    "priority": 45,
+    "agency": "NACO",
+    "description": "HIV/AIDS information, testing centers, treatment support",
+    "descLocalized": {
+      "hi": "HIV/AIDS जानकारी, परीक्षण केंद्र, उपचार सहायता"
+    },
+    "hours": "24/7",
+    "state": "ALL",
+    "createdAt": "2026-06-05T16:33:07.889Z",
+    "updatedAt": "2026-06-05T16:33:07.889Z"
+  }
+]

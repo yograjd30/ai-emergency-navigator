@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOS Nav — The Right Help. Right Now.</title>
+    <meta name="description" content="AI-powered emergency guidance for India. Instantly find the correct helpline, nearest services, and step-by-step procedures for any emergency — in 10 Indian languages." />
+    <meta name="keywords" content="emergency helpline India, 112, police, ambulance, cybercrime, women helpline, disaster, SOS" />
+    <meta name="theme-color" content="#0B1120" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SOS Nav — The Right Help. Right Now." />
+    <meta property="og:description" content="AI-powered emergency guidance for India. Find the right helpline, nearby services, and step-by-step procedures instantly." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SOS Nav — Emergency Guidance for India" />
+    <meta name="twitter:description" content="AI-powered triage • 40+ helplines • 10 Indian languages • Works offline" />
+
+    <!-- PWA -->
+    <link rel="icon" type="image/svg+xml" href="/shield.svg" />
+    <link rel="apple-touch-icon" href="/shield.svg" />
+
+    <!-- Prevent flash of wrong theme -->
+    <script>
+      (function () {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
