@@ -21,49 +21,49 @@ const CATEGORIES = [
 const FEATURES = [
   {
     icon: <Zap className="w-6 h-6" />,
-    title: 'AI Triage in Seconds',
-    desc: 'Describe your emergency in any language. Our AI instantly identifies what you need and surfaces the right contacts.',
+    titleKey: 'landing.feature.triage.title',
+    descKey: 'landing.feature.triage.desc',
     color: '#F59E0B',
   },
   {
     icon: <Globe className="w-6 h-6" />,
-    title: '10 Indian Languages',
-    desc: 'Communicate in Hindi, Tamil, Telugu, Bengali, Marathi, and more. No language barrier in an emergency.',
+    titleKey: 'landing.feature.languages.title',
+    descKey: 'landing.feature.languages.desc',
     color: '#3B82F6',
   },
   {
     icon: <MapPin className="w-6 h-6" />,
-    title: 'Locate Nearby Services',
-    desc: 'GPS-powered map shows the nearest hospital, police station, fire station, and pharmacy in real time.',
+    titleKey: 'landing.feature.nearby.title',
+    descKey: 'landing.feature.nearby.desc',
     color: '#10B981',
   },
   {
     icon: <FileText className="w-6 h-6" />,
-    title: 'Step-by-Step Procedures',
-    desc: 'Clear, verified instructions for filing FIRs, reporting cybercrime, applying for documents — and more.',
+    titleKey: 'landing.feature.procedures.title',
+    descKey: 'landing.feature.procedures.desc',
     color: '#8B5CF6',
   },
   {
     icon: <WifiOff className="w-6 h-6" />,
-    title: 'Works Offline',
-    desc: 'Core helpline numbers are cached for offline access. Emergency info when you need it most.',
+    titleKey: 'landing.feature.offline.title',
+    descKey: 'landing.feature.offline.desc',
     color: '#F97316',
   },
   {
     icon: <Lock className="w-6 h-6" />,
-    title: 'Privacy First',
-    desc: 'Your sessions are encrypted. Data is never sold. Login is optional — most features work anonymously.',
+    titleKey: 'landing.feature.privacy.title',
+    descKey: 'landing.feature.privacy.desc',
     color: '#EC4899',
   },
 ];
 
 const QUICK_HELPLINES = [
-  { name: 'Emergency', number: '112', color: '#EF4444', glow: 'rgba(239,68,68,0.3)' },
-  { name: 'Police', number: '100', color: '#3B82F6', glow: 'rgba(59,130,246,0.3)' },
-  { name: 'Ambulance', number: '108', color: '#10B981', glow: 'rgba(16,185,129,0.3)' },
-  { name: 'Women', number: '181', color: '#A855F7', glow: 'rgba(168,85,247,0.3)' },
-  { name: 'Cybercrime', number: '1930', color: '#06B6D4', glow: 'rgba(6,182,212,0.3)' },
-  { name: 'Child', number: '1098', color: '#F472B6', glow: 'rgba(244,114,182,0.3)' },
+  { nameKey: 'landing.helpline.emergency', number: '112', color: '#EF4444', glow: 'rgba(239,68,68,0.3)' },
+  { nameKey: 'landing.helpline.police', number: '100', color: '#3B82F6', glow: 'rgba(59,130,246,0.3)' },
+  { nameKey: 'landing.helpline.ambulance', number: '108', color: '#10B981', glow: 'rgba(16,185,129,0.3)' },
+  { nameKey: 'landing.helpline.women', number: '181', color: '#A855F7', glow: 'rgba(168,85,247,0.3)' },
+  { nameKey: 'landing.helpline.cybercrime', number: '1930', color: '#06B6D4', glow: 'rgba(6,182,212,0.3)' },
+  { nameKey: 'landing.helpline.child', number: '1098', color: '#F472B6', glow: 'rgba(244,114,182,0.3)' },
 ];
 
 const containerVariants: Variants = {
@@ -148,9 +148,9 @@ export default function Landing() {
                 type="text"
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
-                placeholder="Describe your emergency in any language..."
+                placeholder={t('landing.placeholder')}
                 className="flex-1 bg-transparent outline-none px-4 py-3 text-sos-primary placeholder-sos-muted text-base"
-                aria-label="Describe your emergency"
+                aria-label={t('chat.inputLabel')}
               />
               <button
                 type="submit"
@@ -158,7 +158,7 @@ export default function Landing() {
                 className="flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-transform active:scale-95"
                 style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 4px 20px rgba(59,130,246,0.4)' }}
               >
-                <span className="hidden sm:block">Get Help</span>
+                <span className="hidden sm:block">{t('landing.getHelp')}</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
             </form>
@@ -203,7 +203,7 @@ export default function Landing() {
               viewport={{ once: true }}
               className="heading-2 text-2xl text-center text-sos-primary mb-8"
             >
-              🆘 Critical Helplines — Always Available
+              {t('landing.criticalHelplines')}
             </m.h2>
             <m.div
               variants={containerVariants}
@@ -225,7 +225,7 @@ export default function Landing() {
                     {h.number}
                   </span>
                   <span className="text-xs font-semibold text-sos-secondary group-hover:text-sos-primary transition-colors">
-                    {h.name}
+                    {t(h.nameKey)}
                   </span>
                 </m.a>
               ))}
@@ -242,8 +242,8 @@ export default function Landing() {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <h2 className="heading-2 text-3xl text-sos-primary mb-3">What kind of help do you need?</h2>
-              <p className="text-sos-secondary">Select a category to get targeted assistance instantly</p>
+              <h2 className="heading-2 text-3xl text-sos-primary mb-3">{t('landing.whatKindHelp')}</h2>
+              <p className="text-sos-secondary">{t('landing.selectCategory')}</p>
             </m.div>
             <m.div
               variants={containerVariants}
@@ -283,10 +283,10 @@ export default function Landing() {
               className="text-center mb-12"
             >
               <h2 className="heading-2 text-3xl text-sos-primary mb-3">
-                Built for India's Emergencies
+                {t('landing.builtForIndia')}
               </h2>
               <p className="text-sos-secondary max-w-2xl mx-auto">
-                Every feature is designed around real-world emergency scenarios across urban and rural India.
+                {t('landing.builtForIndiaDesc')}
               </p>
             </m.div>
             <m.div
@@ -298,7 +298,7 @@ export default function Landing() {
             >
               {FEATURES.map((f) => (
                 <m.div
-                  key={f.title}
+                  key={f.titleKey}
                   variants={itemVariants}
                   className="glass-card p-6 rounded-2xl hover:scale-[1.02] transition-transform"
                 >
@@ -308,8 +308,8 @@ export default function Landing() {
                   >
                     {f.icon}
                   </div>
-                  <h3 className="heading-3 text-lg text-sos-primary mb-2">{f.title}</h3>
-                  <p className="text-sos-secondary text-sm leading-relaxed">{f.desc}</p>
+                  <h3 className="heading-3 text-lg text-sos-primary mb-2">{t(f.titleKey)}</h3>
+                  <p className="text-sos-secondary text-sm leading-relaxed">{t(f.descKey)}</p>
                 </m.div>
               ))}
             </m.div>
@@ -322,13 +322,13 @@ export default function Landing() {
             <div className="glass-card p-6 rounded-2xl text-center">
               <div className="flex items-center justify-center gap-3 mb-3">
                 <Shield className="w-5 h-5 text-sos-accent" />
-                <span className="font-bold text-sos-primary text-sm">Verified &amp; Trusted</span>
+                <span className="font-bold text-sos-primary text-sm">{t('landing.verifiedTrusted')}</span>
               </div>
               <p className="text-sos-secondary text-sm mb-4">{t('trust.verified')}</p>
               <div className="flex flex-wrap justify-center gap-3 text-xs text-sos-muted font-medium">
                 <span className="px-3 py-1.5 rounded-full glass-card">📞 {t('trust.count')}</span>
-                <span className="px-3 py-1.5 rounded-full glass-card">🔒 Encrypted Sessions</span>
-                <span className="px-3 py-1.5 rounded-full glass-card">🌐 Govt-Verified Data</span>
+                <span className="px-3 py-1.5 rounded-full glass-card">🔒 {t('landing.encryptedSessions')}</span>
+                <span className="px-3 py-1.5 rounded-full glass-card">🌐 {t('landing.govtVerifiedData')}</span>
               </div>
             </div>
           </div>
@@ -344,9 +344,9 @@ export default function Landing() {
             style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(239,68,68,0.06))' }}
           >
             <div className="text-5xl mb-4">🆘</div>
-            <h2 className="heading-2 text-3xl text-sos-primary mb-3">Emergency? Don't wait.</h2>
+            <h2 className="heading-2 text-3xl text-sos-primary mb-3">{t('landing.emergencyDontWait')}</h2>
             <p className="text-sos-secondary mb-8">
-              Every second counts. Our AI triage is available 24/7 — no login required.
+              {t('landing.everySecondCounts')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
@@ -355,14 +355,14 @@ export default function Landing() {
                 style={{ background: 'linear-gradient(135deg, #EF4444, #DC2626)', boxShadow: '0 4px 24px rgba(239,68,68,0.4)' }}
               >
                 <Phone className="w-5 h-5" />
-                Call 112 Now
+                {t('landing.call112Now')}
               </a>
               <Link
                 to="/chat"
                 className="flex items-center gap-2 px-8 py-4 rounded-xl font-bold glass-button-primary text-lg"
               >
                 <Zap className="w-5 h-5" />
-                AI Emergency Help
+                {t('landing.aiEmergencyHelp')}
               </Link>
             </div>
           </m.div>
@@ -371,9 +371,9 @@ export default function Landing() {
         {/* Footer */}
         <footer className="relative z-10 text-center py-8 px-4 text-sos-muted text-xs border-t border-sos-border">
           <p>
-            SOS Nav — Emergency Guidance for India &nbsp;|&nbsp;
-            Data sourced from official government directories &nbsp;|&nbsp;
-            Not a substitute for 112
+            {t('landing.footer.title')} &nbsp;|&nbsp;
+            {t('landing.footer.source')} &nbsp;|&nbsp;
+            {t('landing.footer.notSubstitute')}
           </p>
         </footer>
       </div>

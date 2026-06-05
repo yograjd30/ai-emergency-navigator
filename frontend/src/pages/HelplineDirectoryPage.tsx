@@ -45,6 +45,7 @@ const CAT_COLORS: Record<string, { color: string; bg: string }> = {
 };
 
 function HelplineCard({ helpline }: { helpline: Helpline }) {
+  const { t } = useLanguage();
   const { color, bg } = CAT_COLORS[helpline.category] ?? CAT_COLORS.general;
   return (
     <m.div
@@ -65,18 +66,20 @@ function HelplineCard({ helpline }: { helpline: Helpline }) {
             {helpline.isEmergency && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold"
                 style={{ background: 'rgba(239,68,68,0.15)', color: '#EF4444', border: '1px solid rgba(239,68,68,0.3)' }}>
-                🔴 Emergency
+                🔴 {t('landing.helpline.emergency')}
               </span>
             )}
           </div>
-          <p className="text-sm text-sos-muted mt-0.5">{helpline.agency}</p>
+          <p className="text-sm text-sos-muted mt-0.5">
+            {t('agency.' + helpline.agency.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')) || helpline.agency}
+          </p>
         </div>
         <span
           className="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
           style={{ background: bg, color }}
         >
           {CATEGORIES.find(c => c.id === helpline.category)?.icon}{' '}
-          {CATEGORIES.find(c => c.id === helpline.category)?.label || helpline.category}
+          {t('categories.' + helpline.category)}
         </span>
       </div>
 
@@ -167,7 +170,7 @@ export default function HelplineDirectoryPage() {
               📞 {t('helplines.title')}
             </h1>
             <p className="text-sos-secondary">
-              Verified emergency and non-emergency helplines across India — always up to date.
+              {t('helplines.subtitle')}
             </p>
           </m.div>
 
@@ -202,8 +205,8 @@ export default function HelplineDirectoryPage() {
                 className="bg-sos-input border border-sos-border text-sos-primary text-sm rounded-xl px-3 py-2.5 outline-none"
                 aria-label="Filter by state"
               >
-                <option value="national">National</option>
-                <option value="all">All States</option>
+                <option value="national">{t('helplines.filter.national')}</option>
+                <option value="all">{t('helplines.filter.allStates')}</option>
               </select>
             </div>
           </m.div>
@@ -226,7 +229,7 @@ export default function HelplineDirectoryPage() {
                 } : {}}
               >
                 <span>{cat.icon}</span>
-                <span>{cat.label}</span>
+                <span>{cat.id === 'all' ? t('categories.all') : t('categories.' + cat.id)}</span>
               </button>
             ))}
           </div>
@@ -234,7 +237,7 @@ export default function HelplineDirectoryPage() {
           {/* Results Count */}
           <div className="flex items-center justify-between mb-4">
             <p className="text-sm text-sos-muted">
-              Showing <span className="font-bold text-sos-primary">{filtered.length}</span> helplines
+              {t('helplines.showingCount').replace('{count}', filtered.length.toString())}
             </p>
           </div>
 
@@ -271,7 +274,7 @@ export default function HelplineDirectoryPage() {
           {regular.length > 0 && (
             <section>
               {emergency.length > 0 && (
-                <h2 className="heading-2 text-xl text-sos-primary mb-4">All Helplines</h2>
+                <h2 className="heading-2 text-xl text-sos-primary mb-4">{t('helplines.allHelplines')}</h2>
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {regular.map((h) => (
@@ -285,8 +288,8 @@ export default function HelplineDirectoryPage() {
           {!isLoading && !error && filtered.length === 0 && (
             <div className="text-center py-16">
               <div className="text-5xl mb-4">🔍</div>
-              <h3 className="text-xl font-bold text-sos-primary mb-2">No helplines found</h3>
-              <p className="text-sos-secondary">Try a different search term or category.</p>
+              <h3 className="text-xl font-bold text-sos-primary mb-2">{t('helplines.noHelplines')}</h3>
+              <p className="text-sos-secondary">{t('helplines.tryDifferent')}</p>
             </div>
           )}
         </div>
