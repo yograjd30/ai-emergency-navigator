@@ -1,0 +1,16 @@
+{
+  "app.name": "SOS Nav",
+  "app.tagline": "ശരിയായ സഹായം. ഇപ്പോൾ തന്നെ.",
+  "app.badge": "🚨 AI അടിയന്തര സഹായ സഹായി",
+  "nav.home": "ഹോം",
+  "nav.helplines": "ഹെൽപ്പ് ലൈനുകൾ",
+  "nav.procedures": "നടപടിക്രമങ്ങൾ",
+  "nav.nearby": "അടുത്തുള്ളവ",
+  "nav.login": "ലോഗിൻ",
+  "nav.logout": "ലോഗ് ഔട്ട്",
+  "hero.cta.primary": "അടിയന്തര സഹായം നേടുക",
+  "chat.title": "അടിയന്തര സഹായി",
+  "chat.placeholder": "നിങ്ങളുടെ അടിയന്തരാവസ്ഥ വിവരിക്കുക...",
+  "emergency.banner": "ഏത് അടിയന്തിര സാഹചര്യത്തിനും 112 വിളിക്കുക",
+  "emergency.call112": "112 വിളിക്കുക"
+}

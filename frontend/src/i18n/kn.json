@@ -1,0 +1,16 @@
+{
+  "app.name": "SOS Nav",
+  "app.tagline": "ಸರಿಯಾದ ಸಹಾಯ. ಈಗಲೇ.",
+  "app.badge": "🚨 AI ಅತ್ಯವసర ಮಾರ್ಗದರ್ಶನ",
+  "nav.home": "ಹೋಮ್",
+  "nav.helplines": "ಹೆಲ್ಪ್‌ಲೈನ್ಸ್",
+  "nav.procedures": "ವಿಧಾನಗಳು",
+  "nav.nearby": "ಹತ್ತಿರದ",
+  "nav.login": "ಲಾಗಿನ್",
+  "nav.logout": "ಲಾಗೌಟ್",
+  "hero.cta.primary": "ಅತ್ಯವಸರ ಸಹಾಯ ಪಡೆಯಿರಿ",
+  "chat.title": "ಅತ್ಯವಸರ ಸಹಾಯಕ",
+  "chat.placeholder": "ನಿಮ್ಮ ಅತ್ಯವಸರ ಪರಿಸ್ಥಿತಿಯನ್ನು ವಿವರಿಸಿ...",
+  "emergency.banner": "ಯಾವುದೇ ತುರ್ತು ಪರಿಸ್ಥಿತಿಗಾಗಿ 112 ಗೆ ಕರೆ ಮಾಡಿ",
+  "emergency.call112": "112 ಗೆ ಕರೆ ಮಾಡಿ"
+}

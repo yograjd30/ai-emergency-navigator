@@ -1,0 +1,16 @@
+{
+  "app.name": "SOS Nav",
+  "app.tagline": "சரியான உதவி. இப்பொழுதே.",
+  "app.badge": "🚨 AI அவசர வழிகாட்டி",
+  "nav.home": "முகப்பு",
+  "nav.helplines": "உதவி எண்கள்",
+  "nav.procedures": "வழிமுறைகள்",
+  "nav.nearby": "அருகிலுள்ளவை",
+  "nav.login": "உள்நுழை",
+  "nav.logout": "வெளியேறு",
+  "hero.cta.primary": "அவசர உதவி பெறுங்கள்",
+  "chat.title": "அவசரகால உதவியாளர்",
+  "chat.placeholder": "உங்கள் அவசரநிலையை விவரிக்கவும்...",
+  "emergency.banner": "எந்தவொரு அவசரநிலைக்கும் 112 ஐ அழைக்கவும்",
+  "emergency.call112": "112 ஐ அழைக்கவும்"
+}

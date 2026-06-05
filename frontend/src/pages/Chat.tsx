@@ -141,8 +141,7 @@ export default function Chat() {
         );
       } else {
         // Follow-up message
-        const res = await api.post('/triage/follow-up', {
-          sessionId,
+        const res = await api.post(`/triage/${sessionId}/followup`, {
           sessionToken,
           message: text,
           language,

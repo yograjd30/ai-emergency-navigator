@@ -1,0 +1,16 @@
+{
+  "app.name": "SOS Nav",
+  "app.tagline": "योग्य मदत. आत्ताच.",
+  "app.badge": "🚨 AI-आधारित आपत्कालीन मार्गदर्शन",
+  "nav.home": "होम",
+  "nav.helplines": "हेल्पलाइन",
+  "nav.procedures": "प्रक्रिया",
+  "nav.nearby": "जवळचे",
+  "nav.login": "लॉगिन",
+  "nav.logout": "लॉगआउट",
+  "hero.cta.primary": "आपत्कालीन मदत मिळवा",
+  "chat.title": "आपत्कालीन सहाय्यक",
+  "chat.placeholder": "तुमची आपत्कालीन परिस्थिती सांगा...",
+  "emergency.banner": "कोणत्याही आणीबाणीसाठी ११२ वर कॉल करा",
+  "emergency.call112": "११२ वर कॉल करा"
+}

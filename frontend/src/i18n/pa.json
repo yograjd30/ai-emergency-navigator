@@ -1,0 +1,16 @@
+{
+  "app.name": "SOS Nav",
+  "app.tagline": "ਸਹੀ ਮਦਦ। ਹੁਣੇ।",
+  "app.badge": "🚨 AI ਐਮਰਜੈਂਸੀ ਗਾਈਡ",
+  "nav.home": "ਹੋਮ",
+  "nav.helplines": "ਹੈਲਪਲਾਈਨ",
+  "nav.procedures": "ਪ੍ਰਕਿਰਿਆਵਾਂ",
+  "nav.nearby": "ਨੇੜੇ ਦੇ",
+  "nav.login": "ਲੌਗਇਨ",
+  "nav.logout": "ਲੌਗਆਉਟ",
+  "hero.cta.primary": "ਐਮਰਜੈਂਸੀ ਮਦਦ ਪ੍ਰਾਪਤ ਕਰੋ",
+  "chat.title": "ਐਮਰਜੈਂਸੀ ਸਹਾਇਕ",
+  "chat.placeholder": "ਆਪਣੀ ਐਮਰਜੈਂਸੀ ਬਾਰੇ ਦੱਸੋ...",
+  "emergency.banner": "ਕਿਸੇ ਵੀ ਐਮਰਜੈਂਸੀ ਲਈ 112 ਡਾਇਲ ਕਰੋ",
+  "emergency.call112": "112 ਕਾਲ ਕਰੋ"
+}

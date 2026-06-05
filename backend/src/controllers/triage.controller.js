@@ -98,6 +98,16 @@ export const triageEmergency = asyncHandler(async (req, res) => {
 
   const session = await EmergencySession.create(sessionData);
 
+  // Localize helpline details based on selected language
+  const localizedHelplines = uniqueHelplines.map(h => {
+    const localized = {};
+    if (language && language !== 'en') {
+      localized.localizedName = h.nameLocalized?.get?.(language) || h.nameLocalized?.[language] || h.name;
+      localized.localizedDesc = h.descLocalized?.get?.(language) || h.descLocalized?.[language] || h.description;
+    }
+    return { ...h, ...localized };
+  });
+
   // Step 5: Return response
   res.json({
     success: true,
@@ -111,7 +121,7 @@ export const triageEmergency = asyncHandler(async (req, res) => {
         suggestedActions: triageResult.suggestedActions || [],
         reasoning: triageResult.reasoning || '',
       },
-      helplines: uniqueHelplines,
+      helplines: localizedHelplines,
       immediateActions: triageResult.suggestedActions || [],
     },
   });
