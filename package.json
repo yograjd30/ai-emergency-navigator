@@ -1,0 +1,8 @@
+{
+  "name": "ai-emergency-navigator-root",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "vercel-build": "npm --prefix backend install && npm --prefix frontend install && npm --prefix frontend run build"
+  }
+}
