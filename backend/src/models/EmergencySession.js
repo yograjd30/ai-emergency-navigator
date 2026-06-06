@@ -13,7 +13,6 @@ const emergencySessionSchema = new mongoose.Schema({
   sessionToken: {
     type: String,
     unique: true,
-    index: true,
     required: true,
   },
   category: {
@@ -78,7 +77,6 @@ const emergencySessionSchema = new mongoose.Schema({
 });
 
 emergencySessionSchema.index({ userId: 1, createdAt: -1 });
-emergencySessionSchema.index({ sessionToken: 1 });
 emergencySessionSchema.index({ category: 1, severity: 1 });
 
 const EmergencySession = mongoose.model('EmergencySession', emergencySessionSchema);
