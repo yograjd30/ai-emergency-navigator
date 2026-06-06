@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import api from '../lib/axios';
 import type { EmergencyContact } from '../types/user';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage, LangCode } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -195,7 +195,7 @@ export default function Profile() {
                 {Object.entries(languages).map(([code, lang]) => (
                   <button
                     key={code}
-                    onClick={() => setLanguage(code as any)}
+                    onClick={() => setLanguage(code as LangCode)}
                     id={`lang-${code}`}
                     className={`flex flex-col items-start px-4 py-3 rounded-xl text-sm transition-all min-h-0 ${
                       language === code

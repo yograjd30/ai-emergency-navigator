@@ -18,6 +18,32 @@ interface Message {
   isTyping?: boolean;
 }
 
+interface SpeechRecognitionInstance {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onresult: (event: SpeechRecognitionEventInstance) => void;
+  onerror: () => void;
+  onend: () => void;
+  start: () => void;
+  stop: () => void;
+}
+
+interface SpeechRecognitionEventInstance {
+  results: {
+    [index: number]: {
+      [index: number]: {
+        transcript: string;
+      };
+    };
+  };
+}
+
+interface WindowWithSpeech extends Window {
+  SpeechRecognition?: new () => SpeechRecognitionInstance;
+  webkitSpeechRecognition?: new () => SpeechRecognitionInstance;
+}
+
 const SEVERITY_CONFIG = {
   critical: { label: 'CRITICAL', color: '#EF4444', glow: 'rgba(239,68,68,0.2)', icon: '🔴' },
   urgent: { label: 'URGENT', color: '#F59E0B', glow: 'rgba(245,158,11,0.2)', icon: '🟡' },
@@ -46,7 +72,7 @@ export default function Chat() {
   const [sessionToken, setSessionToken] = useState<string | null>(null);
   const [triage, setTriage] = useState<TriageResponse | null>(null);
   const [isRecording, setIsRecording] = useState(false);
-  const [recognition, setRecognition] = useState<any>(null);
+  const [recognition, setRecognition] = useState<SpeechRecognitionInstance | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -67,13 +93,13 @@ export default function Chat() {
 
   // Speech recognition setup
   useEffect(() => {
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognition = (window as unknown as WindowWithSpeech).SpeechRecognition || (window as unknown as WindowWithSpeech).webkitSpeechRecognition;
     if (SpeechRecognition) {
       const sr = new SpeechRecognition();
       sr.continuous = false;
       sr.interimResults = false;
       sr.lang = language === 'hi' ? 'hi-IN' : language === 'kn' ? 'kn-IN' : 'en-IN';
-      sr.onresult = (e: any) => {
+      sr.onresult = (e: SpeechRecognitionEventInstance) => {
         setInput(e.results[0][0].transcript);
         setIsRecording(false);
       };
@@ -151,7 +177,7 @@ export default function Chat() {
           prev.map(m => m.id === typingId ? { ...m, content: followUp.response, isTyping: false } : m)
         );
       }
-    } catch (err: any) {
+    } catch {
       setMessages(prev =>
         prev.map(m =>
           m.id === typingId
@@ -163,7 +189,7 @@ export default function Chat() {
       setIsLoading(false);
       inputRef.current?.focus();
     }
-  }, [isLoading, sessionId, sessionToken, language, preCategory]);
+  }, [isLoading, sessionId, sessionToken, language, preCategory, t]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

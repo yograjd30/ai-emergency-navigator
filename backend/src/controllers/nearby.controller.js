@@ -1,12 +1,12 @@
 import { asyncHandler } from '../middleware/asyncHandler.js';
-import { fetchNearbyServices } from '../utils/overpassQuery.js';
+import { fetchNearbyServices } from '../utils/googleMapsQuery.js';
 
 /**
  * GET /api/nearby
- * Query: ?lat=19.076&lng=72.877&types=hospital,police&radius=5000
+ * Query: ?lat=19.076&lng=72.877&type=hospital&radius=5000
  */
 export const getNearbyServices = asyncHandler(async (req, res) => {
-  const { lat, lng, types, radius = 5000 } = req.query;
+  const { lat, lng, type, types, radius = 5000 } = req.query;
 
   if (!lat || !lng) {
     return res.status(400).json({
@@ -18,7 +18,7 @@ export const getNearbyServices = asyncHandler(async (req, res) => {
 
   const latitude = parseFloat(lat);
   const longitude = parseFloat(lng);
-  const radiusMeters = Math.min(parseInt(radius) || 5000, 10000); // Max 10km
+  const radiusMeters = Math.min(parseInt(radius) || 5000, 20000); // Allow up to 20km
 
   if (isNaN(latitude) || isNaN(longitude)) {
     return res.status(400).json({
@@ -28,9 +28,14 @@ export const getNearbyServices = asyncHandler(async (req, res) => {
     });
   }
 
-  const serviceTypes = types
-    ? types.split(',').map(t => t.trim()).filter(Boolean)
-    : ['hospital', 'police', 'fire_station', 'pharmacy'];
+  let serviceTypes = [];
+  if (type) {
+    serviceTypes = [type];
+  } else if (types) {
+    serviceTypes = types.split(',').map(t => t.trim()).filter(Boolean);
+  } else {
+    serviceTypes = ['hospital', 'police_station', 'fire_station', 'pharmacy', 'blood_bank'];
+  }
 
   const results = await fetchNearbyServices(latitude, longitude, serviceTypes, radiusMeters);
 
@@ -44,19 +49,20 @@ export const getNearbyServices = asyncHandler(async (req, res) => {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   };
 
-  const flattenedResults = Object.entries(results).flatMap(([type, items]) =>
+  const flattenedResults = Object.entries(results).flatMap(([t, items]) =>
     items.map(item => ({
       id: String(item.id),
       name: item.name,
-      type,
+      type: t,
       address: item.address || '',
       phone: item.phone || undefined,
       lat: item.lat,
       lng: item.lng,
-      distance: Math.round(calculateDistance(latitude, longitude, item.lat, item.lng)),
-      open: undefined,
+      distance: item.distance !== undefined ? item.distance : Math.round(calculateDistance(latitude, longitude, item.lat, item.lng)),
+      open: item.open,
     }))
   ).sort((a, b) => a.distance - b.distance);
 
   res.json({ success: true, data: flattenedResults });
 });
+

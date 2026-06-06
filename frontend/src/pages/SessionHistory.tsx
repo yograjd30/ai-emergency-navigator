@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import api from '../lib/axios';
 import type { EmergencySession } from '../types/session';
+import type { Helpline } from '../types/helpline';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -106,7 +107,7 @@ function SessionCard({ session, onBookmark, onDelete }: {
       {session.triageResult?.matchedHelplines?.length > 0 && (
         <div className="mt-3 pt-3 border-t border-sos-border flex items-center gap-2 flex-wrap">
           <span className="text-xs text-sos-muted">Helplines:</span>
-          {session.triageResult.matchedHelplines.slice(0, 3).map((h: any) => (
+          {session.triageResult.matchedHelplines.slice(0, 3).map((h: Helpline) => (
             <a
               key={h._id}
               href={`tel:${h.number}`}
@@ -131,7 +132,7 @@ export default function SessionHistory() {
   const { data, isLoading } = useQuery({
     queryKey: ['sessions', filter, page],
     queryFn: async () => {
-      const params: Record<string, any> = { page, limit: 12 };
+      const params: Record<string, string | number | boolean> = { page, limit: 12 };
       if (filter === 'bookmarked') params.bookmarked = true;
       if (filter === 'resolved') params.resolved = true;
       const res = await api.get('/sessions', { params });

@@ -7,7 +7,7 @@ const SUPPORTED_LANGUAGES = {
   kn: { name: 'Kannada', nativeName: 'ಕನ್ನಡ' },
 };
 
-type LangCode = keyof typeof SUPPORTED_LANGUAGES;
+export type LangCode = keyof typeof SUPPORTED_LANGUAGES;
 
 interface LanguageContextType {
   language: LangCode;

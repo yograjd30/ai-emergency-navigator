@@ -9,7 +9,7 @@ import api from '../lib/axios';
 import { useLanguage } from '../context/LanguageContext';
 
 // Fix leaflet default marker icon broken in Vite
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: string | (() => string) })._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -95,7 +95,7 @@ export default function NearbyServicesPage() {
     );
   }, []);
 
-  useEffect(() => { getLocation(); }, []);
+  useEffect(() => { getLocation(); }, [getLocation]);
 
   const { data: services, isLoading } = useQuery({
     queryKey: ['nearby', userLocation?.lat, userLocation?.lng, radius, activeType],
