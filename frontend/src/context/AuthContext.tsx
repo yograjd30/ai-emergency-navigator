@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const user = data ?? null;
 
   const login = () => {
-    window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/google`;
+    window.location.href = `${import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api')}/auth/google`;
   };
 
   const logout = async () => {

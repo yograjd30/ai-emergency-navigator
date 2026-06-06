@@ -9,7 +9,8 @@ export function configurePassport() {
   passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID || 'placeholder-client-id',
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'placeholder-secret',
-    callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/auth/google/callback',
+    callbackURL: process.env.GOOGLE_CALLBACK_URL || (process.env.NODE_ENV === 'production' ? '/api/auth/google/callback' : 'http://localhost:5000/api/auth/google/callback'),
+    proxy: true,
   }, async (accessToken, refreshToken, profile, done) => {
     try {
       let user = await User.findOne({ googleId: profile.id });
