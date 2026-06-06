@@ -1,5 +1,5 @@
 import { asyncHandler } from '../middleware/asyncHandler.js';
-import { fetchNearbyServices } from '../utils/googleMapsQuery.js';
+import { fetchNearbyServices } from '../utils/overpassQuery.js';
 
 /**
  * GET /api/nearby

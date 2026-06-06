@@ -6,8 +6,10 @@
 const AMENITY_MAP = {
   hospital: 'hospital',
   police: 'police',
+  police_station: 'police',
   fire_station: 'fire_station',
   pharmacy: 'pharmacy',
+  blood_bank: 'blood_bank', // Also querying blood banks
   shelter: 'shelter',
   government: 'townhall',
 };

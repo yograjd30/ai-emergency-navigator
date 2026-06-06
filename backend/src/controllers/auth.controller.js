@@ -83,7 +83,7 @@ async function mockAuthBypass(req, res, next) {
       if (err) {
         return next(err);
       }
-      return res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/`);
+      return res.redirect(process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:5173/'));
     });
   } catch (err) {
     return next(err);
@@ -107,10 +107,10 @@ export const googleLogin = (req, res, next) => {
  */
 export const googleCallback = (req, res, next) => {
   if (process.env.MOCK_DB === 'true') {
-    return res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/`);
+    return res.redirect(process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:5173/'));
   }
   return passport.authenticate('google', {
-    failureRedirect: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/`,
+    failureRedirect: process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:5173/'),
   })(req, res, next);
 };
 
@@ -118,7 +118,7 @@ export const googleCallback = (req, res, next) => {
  * After successful OAuth callback, redirect to frontend.
  */
 export const googleCallbackRedirect = (req, res) => {
-  res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/`);
+  res.redirect(process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:5173/'));
 };
 
 /**
